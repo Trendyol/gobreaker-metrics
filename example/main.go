@@ -1,4 +1,4 @@
-package example
+package main
 
 import (
 	"github.com/sony/gobreaker/v2"
