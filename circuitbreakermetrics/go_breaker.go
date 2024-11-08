@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const MetricPrefix = "gobreaker_"
+const MetricPrefix = "gobreaker"
 
 func GetMetricName(metricName string) string {
 	return fmt.Sprintf("%s_%s", MetricPrefix, metricName)
