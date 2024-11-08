@@ -1,0 +1,44 @@
+# macOS
+**/.DS_Store
+
+# Dev build
+build/
+tmp/
+
+# Test
+*.out
+
+# Environment variables
+.env
+
+mocks/
+
+.idea
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# CMake
+cmake-build-*/
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+
+#Sonarqube
+.scannerwork/
+/.vscode/launch.json
+/.vscode/settings.json
