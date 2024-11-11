@@ -7,10 +7,6 @@ import (
 )
 
 func main() {
-
 	circuitBreaker := gobreaker.NewCircuitBreaker[any](gobreaker.Settings{Name: ""})
-
-	goBreakerMetricExporter := gobreakerexporter.Of(circuitBreaker)
-	goBreakerMetricExporter.Start(time.Second * 1)
-
+	gobreakerexporter.Of(circuitBreaker).Start(time.Second * 1)
 }
