@@ -24,22 +24,22 @@ You can add the library to your Go module by running:
 ### Basic Setup
 Below is a sample code snippet to demonstrate how to start monitoring your Go-Sony Breaker circuit breaker using this library.
 
-    package main  
-      
-    import (  
-        "github.com/sony/gobreaker/v2"  
-     "gobreaker-metric/gobreakerexporter" "time")  
-      
-    func main() {  
-      
-        circuitBreaker := gobreaker.NewCircuitBreaker[any](gobreaker.Settings{Name: ""})   # Step1
-      
-        goBreakerMetricExporter := gobreakerexporter.Of(circuitBreaker)  # Step2
-        goBreakerMetricExporter.Start(time.Second * 1)  # Step3
-      
-    }
+```go
+package main
 
+import (
+	"github.com/sony/gobreaker/v2"
+	"gobreaker-metric/gobreakerexporter" "time")
 
+func main() {
+
+	circuitBreaker := gobreaker.NewCircuitBreaker[any](gobreaker.Settings{Name: ""})   # Step1
+
+	goBreakerMetricExporter := gobreakerexporter.Of(circuitBreaker)  # Step2
+	goBreakerMetricExporter.Start(time.Second * 1)  # Step3
+
+}
+```
 
 ### Explanation of Code
 - Step 1: Configure and initialize a circuit breaker using sony/goreaker settings.
@@ -49,16 +49,17 @@ Below is a sample code snippet to demonstrate how to start monitoring your Go-So
 ### Prometheus Configuration
 To scrape the metrics from the exporter, make sure prometheus '**/metrics**' endpoint active. Add the following Prometheus configuration to your code if you use the Gin web framework:
 
-    router.GET("/metrics", prometheusHandler())
+```go
+router.GET("/metrics", prometheusHandler())
 
-
-    func prometheusHandler() gin.HandlerFunc {  
-        h := promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{DisableCompression: true})  
-      
-        return func(c *gin.Context) {  
-           h.ServeHTTP(c.Writer, c.Request)  
-        }  
-    }
+func prometheusHandler() gin.HandlerFunc {  
+    h := promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{DisableCompression: true})  
+  
+    return func(c *gin.Context) {  
+       h.ServeHTTP(c.Writer, c.Request)  
+    }  
+}
+```
 
 ### Available Metrics
 The following metrics are exposed by the library:
