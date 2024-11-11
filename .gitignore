@@ -37,8 +37,9 @@ out/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
-
 #Sonarqube
 .scannerwork/
 /.vscode/launch.json
 /.vscode/settings.json
+
+dist/
