@@ -2,13 +2,12 @@ package gobreakerexporter
 
 import (
 	"errors"
-	"gobreaker-metric/circuitbreakermetrics"
-	"testing"
-	"time"
-
 	"github.com/prometheus/client_golang/prometheus/testutil"
 	"github.com/sony/gobreaker/v2"
-	"github.com/stretchr/testify/assert"
+	"gobreaker-metric/circuitbreakermetrics"
+	assert "gobreaker-metric/test"
+	"testing"
+	"time"
 )
 
 func TestGoBreakerMetricExporter_Count(t *testing.T) {
