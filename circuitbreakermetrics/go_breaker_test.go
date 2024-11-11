@@ -1,11 +1,10 @@
 package circuitbreakermetrics
 
 import (
+	"github.com/prometheus/client_golang/prometheus/testutil"
+	assert "gobreaker-metric/test"
 	"testing"
 	"time"
-
-	"github.com/prometheus/client_golang/prometheus/testutil"
-	"github.com/stretchr/testify/assert"
 )
 
 type MockGoBreakerMetricExporter struct {
@@ -92,14 +91,14 @@ func TestRegisterGoBreakerMetrics(t *testing.T) {
 	time.Sleep(300 * time.Millisecond)
 
 	requests := testutil.ToFloat64(requestCounter.WithLabelValues("test_circuit"))
-	assert.GreaterOrEqual(t, requests, 10.0)
+	assert.GreaterOrEqual(t, 10.0, requests)
 
 	successes := testutil.ToFloat64(successCounter.WithLabelValues("test_circuit"))
-	assert.GreaterOrEqual(t, successes, 8.0)
+	assert.GreaterOrEqual(t, 8.0, successes)
 
 	failures := testutil.ToFloat64(failureCounter.WithLabelValues("test_circuit"))
-	assert.GreaterOrEqual(t, failures, 2.0)
+	assert.GreaterOrEqual(t, 2.0, failures)
 
 	closedState := testutil.ToFloat64(circuitBreakerState.WithLabelValues("test_circuit", StateClosed.String()))
-	assert.Equal(t, 1.0, closedState)
+	assert.Equal(t, closedState, 1.0)
 }
