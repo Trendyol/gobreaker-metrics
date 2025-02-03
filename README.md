@@ -1,3 +1,5 @@
+
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Trendyol/gobreaker-metrics/badge)](https://scorecard.dev/viewer/?uri=github.com/Trendyol/gobreaker-metrics)
 # gobreaker-metrics
 
 This library enables you to monitor the state of your [sony/gobreaker](https://github.com/sony/gobreaker) circuit
